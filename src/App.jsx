@@ -15,7 +15,7 @@ function App() {
   const [names, setNames] = useState(data);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const addName = (name) => {    
+  function addName(name) {    
     let nameObj = { id: data.length + 1, name};
     //console.log(nameObj);
     data.push(nameObj);
