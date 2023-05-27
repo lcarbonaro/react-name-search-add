@@ -7,7 +7,7 @@
 function Name({firstName}) {
 
     return (
-        <li>{firstName.toUpperCase()}</li>
+        <li>{firstName}</li>
     )
 
 }

@@ -15,21 +15,18 @@ function App() {
   const [names, setNames] = useState(data);
   const [searchTerm, setSearchTerm] = useState("");
 
-  function addName(name) {
-    alert('in addName function newName:',name);
-    setNames( (prevNames) => { 
-      return [ ...prevNames, name]
-     }  );
+  const addName = (name) => {    
+    let nameObj = { id: data.length + 1, name};
+    //console.log(nameObj);
+    data.push(nameObj);
+    console.table(data);
+    setNames(data);
+    setSearchTerm("");
   }
 
   useEffect(()=>{
-    if( searchTerm!=="" ) {
-      let filteredNames = data.filter( n => n.name.toLowerCase().includes( searchTerm.toLowerCase())  );
-      //console.log(filteredNames);
-      setNames([...filteredNames]);
-    } else {
-      setNames([...data]);
-    }   
+    let filteredNames = data.filter( n => n.name.toLowerCase().includes( searchTerm.toLowerCase())  );
+    setNames(filteredNames);
   }, [searchTerm]);
 
   return (
@@ -54,7 +51,7 @@ function App() {
 
       <hr/>
 
-      <AddForm addName={ addName }/>
+      <AddForm addName={addName}/>
      
     </>
   );
